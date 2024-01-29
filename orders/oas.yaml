@@ -40,6 +40,7 @@ paths:
             application/json:
               schema:
                 type: object
+                additionalProperties: false
                 properties:
                   orders:
                     type: array
@@ -209,8 +210,10 @@ components:
             - type: array
       required:
         - detail
+      additionalProperties: false
 
     OrderItemSchema:
+      additionalProperties: false
       type: object
       required:
         - product
@@ -232,6 +235,7 @@ components:
           maximum: 1000000
 
     CreateOrderSchema:
+      additionalProperties: false
       type: object
       required:
         - order
@@ -243,29 +247,34 @@ components:
             $ref: '#/components/schemas/OrderItemSchema'
 
     GetOrderSchema:
-      allOf:
-        - $ref: "#/components/schemas/CreateOrderSchema"
-        - type: object
-          required:
-            - id
+      additionalProperties: false
+      type: object
+      required:
+        - id
+        - created
+        - status
+        - order
+      properties:
+        id:
+          type: string
+          format: uuid
+        created:
+          type: string
+          format: date-time
+        status:
+          type: string
+          enum:
             - created
-            - status
-          properties:
-            id:
-              type: string
-              format: uuid
-            created:
-              type: string
-              format: date-time
-            status:
-              type: string
-              enum:
-                - created
-                - paid
-                - progress
-                - cancelled
-                - dispatched
-                - delivered
+            - paid
+            - progress
+            - cancelled
+            - dispatched
+            - delivered
+        order:
+          type: array
+          minItems: 1
+          items:
+            $ref: '#/components/schemas/OrderItemSchema'
 
 security:
   - oauth2:
