@@ -1,5 +1,5 @@
 {
   "dependencies": {
-    "@stoplight/prism-cli": "^4.1.1"
+    "@stoplight/prism-cli": "^5.5.4"
   }
 }
