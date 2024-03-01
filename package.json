@@ -1,5 +1,6 @@
 {
   "dependencies": {
-    "@stoplight/prism-cli": "^5.5.4"
+    "@stoplight/prism-cli": "^5.5.4",
+    "graphql-faker": "2.0.0-rc.25"
   }
 }
