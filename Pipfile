@@ -8,12 +8,16 @@ alembic = "*"
 black = "*"
 
 [packages]
-sqlalchemy = "*"
+cryptography = "*"
 fastapi = "*"
-uvicorn = "*"
+pyjwt = "*"
 requests = "*"
+sqlalchemy = "*"
+uvicorn = "*"
 pyyaml = "*"
-alembic = "*"
 
 [requires]
 python_version = "3.10"
+
+[pipenv]
+allow_prereleases = true
